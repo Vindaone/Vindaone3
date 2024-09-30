@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vƗ𝐍Ć𝑒? - Minecraft Content</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Press Start 2P', cursive;
+      background-color: #000000; /* Black background */
+      color: #ffffff; /* White text */
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    header {
+      background-color: #000000; /* Black */
+      color: #ffffff; /* White */
+      padding: 10px 0;
+      text-align: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    header nav a {
+      background-color: #000000; /* Black */
+      color: #ffffff; /* White text */
+      text-decoration: none;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+      outline: none;
+      border: none;
+    }
+
+    header nav a:active,
+    header nav a.active {
+      background-color: #000000; /* Dark gray when pressed */
+      color: #ffffff; /* White text */
+    }
+
+    header nav a:hover {
+      background-color: #000000; /* Dark gray on hover */
+      color: #ffffff; /* White text */
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 100px 20px;
+      display: none;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.6s ease, transform 0.6s ease; /* Smoother effects */
+      position: fixed;
+      width: 100%;
+      top: 0;
+    }
+
+    section.active {
+      display: flex;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    #download {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px; /* Adds space above the download section */
+    }
+
+    #download h1 {
+      margin-bottom: 20px; /* Space below the header */
+    }
+
+    #download ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    #download ul li {
+      margin-bottom: 15px; /* Adds space between each download link */
+    }
+
+    #download ul li a {
+      background-color: #ffffff; /* White */
+      color: #000000; /* Black */
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: background-color 0.3s, transform 0.3s;
+      font-size: 16px;
+      width: 200px;
+      text-align: center;
+    }
+
+    #download ul li a:hover {
+      background-color: #000000; /* Dark gray */
+      transform: scale(1.05);
+      color: #ffffff; /* White text */
+    }
+
+    #social {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #social ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    #social ul li a {
+      background-color: #ffffff; /* White */
+      color: #000000; /* Black */
+      text-decoration: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s, transform 0.3s;
+      font-size: 24px;
+    }
+
+    #social ul li a:hover {
+      background-color: #000000; /* Dark gray */
+      transform: scale(1.1);
+      color: #ffffff; /* White text */
+    }
+
+    footer {
+      background-color: #000000; /* Black */
+      color: #ffffff; /* White */
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    footer a {
+      color: #ffffff; /* White */
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    body.blur {
+      filter: blur(5px); /* Reduced blur for smoother effect */
+      transition: filter 0.6s ease;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.95);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    section.animated {
+      animation: zoomIn 0.6s forwards; /* Smoother animation */
+    }
+
+    @media (max-width: 600px) {
+      header nav a {
+        font-size: 12px;
+        padding: 5px 10px;
+      }
+
+      #download ul li a {
+        font-size: 12px;
+        padding: 8px 15px;
+        width: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#home" onclick="navigateToSection('home', this)">Home</a>
+    <a href="#download" onclick="navigateToSection('download', this)">Download</a>
+    <a href="#social" onclick="navigateToSection('social', this)">Social</a>
+  </nav>
+</header>
+
+<section id="home" class="section active">
+  <h1>Welcome to vƗ𝐍Ć𝑒?</h1>
+  <p>Discover top-tier FPS boost clients and PvP packs designed to elevate your Minecraft gameplay. Enhance performance and dominate the battlefield!</p>
+</section>
+
+<section id="download" class="section">
+  <h1>Download FPS Boost Clients and PvP Packs</h1>
+  <div style="margin: 40px 0;"> <!-- Adds a visual break -->
+    <ul>
+      <li><a href="#">VoidV4 - Download</a></li>
+      <li><a href="#">VoidV3 - Download</a></li>
+      <li><a href="#">VoidV2 - Download</a></li>
+      <li><a href="#">No Vidia - Download</a></li>
+      <li><a href="#">Exo - Download</a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="social" class="section">
+  <h1>Connect with Us</h1>
+  <p>Follow us on our social media channels to stay updated on the latest news and releases!</p>
+  <ul>
+    <li><a href="#" title="Discord"><i class="fab fa-discord"></i></a></li>
+    <li><a href="#" title="YouTube"><i class="fab fa-youtube"></i></a></li>
+    <li><a href="#" title="Facebook"><i class="fab fa-facebook"></i></a></li>
+    <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+  </ul>
+</section>
+
+<footer>
+  <p>© 2024 vƗ𝐍Ć𝑒? - All Rights Reserved</p>
+</footer>
+
+<script>
+  function navigateToSection(sectionId, element) {
+    const sections = document.querySelectorAll('.section');
+    document.body.classList.add('blur');
+
+    // Remove 'active' class from all nav links
+    const navLinks = document.querySelectorAll('header nav a');
+    navLinks.forEach(link => link.classList.remove('active'));
+
+    // Add 'active' class to the clicked link
+    element.classList.add('active');
+
+    setTimeout(() => {
+      sections.forEach((section) => {
+        section.classList.remove('active', 'animated');
+        section.style.display = 'none';
+      });
+
+      const targetSection = document.getElementById(sectionId);
+      targetSection.style.display = 'flex';
+      targetSection.classList.add('active', 'animated');
+      document.body.classList.remove('blur');
+    }, 600); // Match this with the blur transition duration
+  }
+</script>
+
+</body>
+</html>
