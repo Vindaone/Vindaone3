@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Animation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000; /* Super black background */
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            opacity: 0; /* Initially hidden for fade-in effect */
+            transform: scale(0.5); /* Start smaller for zoom effect */
+            animation: zoomIn 2s forwards, slide 5s ease-in-out 5; /* Zoom in and slide */
+            position: relative; /* Use relative positioning */
+            z-index: 1; /* Ensure it appears above any background */
+        }
+        .fade-out {
+            opacity: 0; /* Fade out effect */
+            transition: opacity 3s ease; /* Smooth fade-out */
+        }
+        @keyframes zoomIn {
+            0% { opacity: 0; transform: scale(0.5); } /* Start small and invisible */
+            100% { opacity: 1; transform: scale(1); } /* End at normal size and visible */
+        }
+        @keyframes slide {
+            0%, 100% { transform: translateX(0); } /* Start and end in the center */
+            25% { transform: translateX(-10px); } /* Slide to the left */
+            50% { transform: translateX(10px); } /* Slide to the right */
+            75% { transform: translateX(-10px); } /* Slide to the left */
+        }
+        .tagline {
+            font-family: 'Press Start 2P', cursive; /* Apply the font */
+            color: white;
+            font-size: 18px; /* Adjust font size for the tagline */
+            margin-top: 10px; /* Space between logo and tagline */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Glowing effect */
+        }
+        .logo-text {
+            font-family: 'Press Start 2P', cursive; /* Apply the font */
+            color: white;
+            font-size: 36px; /* Adjust font size for the logo text */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Glowing effect */
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="logoContainer">
+        <div class="logo-text">vƗ𝐍Ć𝑒?</div>
+        <p class="tagline">Loading... Prepare for Adventure!</p>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const logoContainer = document.getElementById('logoContainer');
+
+            // Fade out logo and tagline after 11 seconds
+            setTimeout(() => {
+                logoContainer.classList.add('fade-out'); // Add fade-out class
+                setTimeout(() => {
+                    logoContainer.style.display = 'none'; // Remove from view after fade-out completes
+
+                    // Redirect to webvi.html
+                    window.location.href = 'webvi.html';
+                }, 3000); // Match this time with the fade-out duration
+            }, 11000); // Wait for 11 seconds before starting to fade out
+        };
+    </script>
+</body>
+</html>
