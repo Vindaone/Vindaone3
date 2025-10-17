@@ -8,6 +8,7 @@
   
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <style>
     * {
       margin: 0;
@@ -17,15 +18,16 @@
 
     body {
       font-family: 'Press Start 2P', cursive;
-      background-color: #000000; /* Black background */
-      color: #ffffff; /* White text */
+      background-color: #000;
+      color: #fff;
       overflow-x: hidden;
       position: relative;
+      height: 100%;
     }
 
     header {
-      background-color: #000000; /* Black */
-      color: #ffffff; /* White */
+      background-color: #000;
+      color: #fff;
       padding: 10px 0;
       text-align: center;
       position: fixed;
@@ -41,89 +43,77 @@
     }
 
     header nav a {
-      background-color: #000000; /* Black */
-      color: #ffffff; /* White text */
+      background-color: #000;
+      color: #fff;
       text-decoration: none;
       padding: 10px 15px;
       font-size: 16px;
       border-radius: 5px;
-      transition: background-color 0.3s, color 0.3s;
-      outline: none;
-      border: none;
+      transition: 0.3s;
     }
 
-    header nav a:active,
     header nav a.active {
-      background-color: #000000; /* Dark gray when pressed */
-      color: #ffffff; /* White text */
-    }
-
-    header nav a:hover {
-      background-color: #000000; /* Dark gray on hover */
-      color: #ffffff; /* White text */
+      background-color: #111;
+      color: #fff;
     }
 
     section {
       min-height: 100vh;
-      padding: 100px 20px;
+      padding: 100px 20px 80px 20px;
       display: none;
       text-align: center;
       justify-content: center;
       align-items: center;
       opacity: 0;
       transform: scale(0.95);
-      transition: opacity 0.6s ease, transform 0.6s ease; /* Smoother effects */
-      position: fixed;
-      width: 100%;
-      top: 0;
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
     section.active {
-      display: flex;
+      display: block;
       opacity: 1;
       transform: scale(1);
     }
 
+    /* --- DOWNLOAD SECTION --- */
     #download {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 40px; /* Adds space above the download section */
+      display: block;
+      overflow-y: auto;
+      height: 100vh;
     }
 
     #download h1 {
-      margin-bottom: 20px; /* Space below the header */
+      margin-bottom: 20px;
     }
 
     #download ul {
       list-style: none;
       padding: 0;
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
     }
 
     #download ul li {
-      margin-bottom: 15px; /* Adds space between each download link */
+      margin: 10px;
     }
 
     #download ul li a {
-      background-color: #ffffff; /* White */
-      color: #000000; /* Black */
-      padding: 10px 20px;
+      background-color: #fff;
+      color: #000;
+      padding: 12px 25px;
       text-decoration: none;
       border-radius: 10px;
-      transition: background-color 0.3s, transform 0.3s;
-      font-size: 16px;
-      width: 200px;
-      text-align: center;
+      transition: 0.3s;
+      font-size: 14px;
+      display: inline-block;
     }
 
     #download ul li a:hover {
-      background-color: #000000; /* Dark gray */
+      background-color: #000;
+      color: #fff;
       transform: scale(1.05);
-      color: #ffffff; /* White text */
     }
 
     #social {
@@ -141,28 +131,27 @@
     }
 
     #social ul li a {
-      background-color: #ffffff; /* White */
-      color: #000000; /* Black */
-      text-decoration: none;
+      background-color: #fff;
+      color: #000;
       border-radius: 50%;
       width: 50px;
       height: 50px;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: background-color 0.3s, transform 0.3s;
+      transition: 0.3s;
       font-size: 24px;
     }
 
     #social ul li a:hover {
-      background-color: #000000; /* Dark gray */
+      background-color: #000;
+      color: #fff;
       transform: scale(1.1);
-      color: #ffffff; /* White text */
     }
 
     footer {
-      background-color: #000000; /* Black */
-      color: #ffffff; /* White */
+      background-color: #000;
+      color: #fff;
       text-align: center;
       padding: 10px;
       position: fixed;
@@ -171,7 +160,7 @@
     }
 
     footer a {
-      color: #ffffff; /* White */
+      color: #fff;
       text-decoration: none;
       font-size: 14px;
     }
@@ -181,35 +170,20 @@
     }
 
     body.blur {
-      filter: blur(5px); /* Reduced blur for smoother effect */
+      filter: blur(5px);
       transition: filter 0.6s ease;
     }
 
-    @keyframes zoomIn {
-      from {
-        transform: scale(0.95);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    section.animated {
-      animation: zoomIn 0.6s forwards; /* Smoother animation */
-    }
-
     @media (max-width: 600px) {
-      header nav a {
-        font-size: 12px;
-        padding: 5px 10px;
+      #download ul {
+        flex-direction: column;
+        align-items: center;
       }
 
       #download ul li a {
+        width: 180px;
         font-size: 12px;
-        padding: 8px 15px;
-        width: 150px;
+        padding: 8px 12px;
       }
     }
   </style>
@@ -231,21 +205,20 @@
 
 <section id="download" class="section">
   <h1>Download FPS Boost Clients and PvP Packs</h1>
-  <div style="margin: 40px 0;"> <!-- Adds a visual break -->
-    <ul>
-      <li><a href="https://linkpays.in/SyyQfJc">Lumino v2 - Download</a></li>
-      <li><a href="https://linkpays.in/F2pjHS">Lumino V1 - Download</a></li>
-      <li><a href="https://linkpays.in/GeDc">Void V6 - Download</a></li>
-      <li><a href="https://linkpays.in/mRh3">Void V5 - Download</a></li>
-      <li><a href="https://linkpays.in/KX8i7g">Void V4 - Download</a></li>
-      <li><a href="https://linkpays.in/u1YT">Void V3 - Download</a></li>
-      <li><a href="https://linkpays.in/eIJ7h">Void V2 - Download</a></li>
-      <li><a href="https://linkpays.in/arCs">No Vidia - Download</a></li>
-      <li><a href="https://linkpays.in/FY2X0U">Exo - Download</a></li>
-      <li><a href="https://linkpays.in/zXPF">Vannila Tweaks - Download</a></li>
-      <li><a href="https://linkpays.in/zyMO">CM Client - Download</a></li>
-    </ul>
-  </div>
+  <ul>
+    <li><a href="https://linkpays.in/SyyQfJc">Lumino v2</a></li>
+    <li><a href="https://linkpays.in/F2pjHS">Lumino V1</a></li>
+    <li><a href="https://rshrt.com/V3c1">Void V7</a></li>
+    <li><a href="https://linkpays.in/GeDc">Void V6</a></li>
+    <li><a href="https://linkpays.in/mRh3">Void V5</a></li>
+    <li><a href="https://linkpays.in/KX8i7g">Void V4</a></li>
+    <li><a href="https://linkpays.in/u1YT">Void V3</a></li>
+    <li><a href="https://linkpays.in/eIJ7h">Void V2</a></li>
+    <li><a href="https://linkpays.in/arCs">No Vidia</a></li>
+    <li><a href="https://linkpays.in/FY2X0U">Exo</a></li>
+    <li><a href="https://linkpays.in/zXPF">Vanilla Tweaks</a></li>
+    <li><a href="https://linkpays.in/zyMO">CM Client</a></li>
+  </ul>
 </section>
 
 <section id="social" class="section">
@@ -267,25 +240,20 @@
   function navigateToSection(sectionId, element) {
     const sections = document.querySelectorAll('.section');
     document.body.classList.add('blur');
-
-    // Remove 'active' class from all nav links
     const navLinks = document.querySelectorAll('header nav a');
     navLinks.forEach(link => link.classList.remove('active'));
-
-    // Add 'active' class to the clicked link
     element.classList.add('active');
 
     setTimeout(() => {
-      sections.forEach((section) => {
-        section.classList.remove('active', 'animated');
+      sections.forEach(section => {
+        section.classList.remove('active');
         section.style.display = 'none';
       });
-
-      const targetSection = document.getElementById(sectionId);
-      targetSection.style.display = 'flex';
-      targetSection.classList.add('active', 'animated');
+      const target = document.getElementById(sectionId);
+      target.style.display = 'block';
+      target.classList.add('active');
       document.body.classList.remove('blur');
-    }, 600); // Match this with the blur transition duration
+    }, 600);
   }
 </script>
 
